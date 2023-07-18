@@ -1,0 +1,7 @@
+name = "Julia_run"
+uuid = "f3f93d1b-dfee-4acc-97c3-1cb21e92a70d"
+authors = ["andreas "]
+version = "0.1.0"
+
+[deps]
+JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
