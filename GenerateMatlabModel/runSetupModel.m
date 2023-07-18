@@ -17,14 +17,20 @@ for icase = 1 : numel(casenames)
 end
 
 jlcall('', ...
-     'project', '/data2/andreas/BattDaemon/Julia_run', ... % activate a local Julia Project
+     'project', '/data2/andreas/BattDaemon/matlabjulia', ... % activate a local Julia Project
      'setup', '/data2/andreas/BattDaemon/setup.jl',...
-     'modules', {'Julia_run', 'JSON'}, ... % load a custom module and some modules from Base Julia
+     'modules', {'Julia_run'}, ... % load a custom module and some modules from Base Julia
      'threads', 'auto', ... % use the default number of Julia threads
-     'restart', true ... % start a fresh Julia server environment
+     'restart', true, ... % start a fresh Julia server environment
+     'debug',true ...
      )
+     %
 
-jlcall('Julia_run.jsondict', {model,schedule,state0})
+export=struct('model', model, ...
+                'schedule',schedule,...
+                'state0', state0,...
+                'states',[]);
+jlcall('Julia_run.setup_wrapper', {export})
 
 
 
