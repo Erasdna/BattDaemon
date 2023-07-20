@@ -30,7 +30,16 @@ export=struct('model', model, ...
                 'schedule',schedule,...
                 'state0', state0,...
                 'states',[]);
-jlcall('Julia_run.setup_wrapper', {export})
+states=jlcall('Julia_run.setup_wrapper', {export})
 
+%%
 
+% k=fieldnames(states);
+% 
+% state_cell=cell(length(k),1);
+% 
+% for i=1:length(k)
+%     ind=str2num(erase(k{i}, "Step"));
+%     state_cell{ind}=states.(k{i});
+% end
 
